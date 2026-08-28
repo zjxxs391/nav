@@ -141,7 +141,7 @@
 
 ```bash
 git pull
-git remote add upstream https://gitee.com/xiejiahe/nav.git
+git remote add upstream https://github.com/xjh22222228/nav.git
 git fetch upstream main
 git merge upstream/main --allow-unrelated-histories --no-edit
 git push

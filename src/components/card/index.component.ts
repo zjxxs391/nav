@@ -19,7 +19,7 @@ import { NzRateModule } from 'ng-zorro-antd/rate'
 import { LogoComponent } from 'src/components/logo/logo.component'
 import { NzButtonModule } from 'ng-zorro-antd/button'
 import { TagListComponent } from 'src/components/tag-list/index.component'
-import { NzToolTipModule } from 'ng-zorro-antd/tooltip'
+import { NzTooltipModule } from 'ng-zorro-antd/tooltip'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm'
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
@@ -39,7 +39,7 @@ import event from 'src/utils/mitt'
     LogoComponent,
     NzButtonModule,
     TagListComponent,
-    NzToolTipModule,
+    NzTooltipModule,
     NzIconModule,
     NzPopconfirmModule,
     SafeHtmlPipe,

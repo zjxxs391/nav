@@ -99,7 +99,8 @@ export interface IHolidayProps {
 }
 
 export interface IComponentItemProps
-  extends Partial<Omit<INewsProps, 'bgColor'>>,
+  extends
+    Partial<Omit<INewsProps, 'bgColor'>>,
     Partial<ICalendarProps>,
     Partial<IOffWorkProps>,
     Partial<IImageProps>,

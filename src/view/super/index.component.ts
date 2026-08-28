@@ -16,7 +16,7 @@ import { ComponentGroupComponent } from 'src/components/component-group/index.co
 import { WebMoreMenuComponent } from 'src/components/web-more-menu/index.component'
 import { SearchComponent } from 'src/components/search/index.component'
 import { NzSpinModule } from 'ng-zorro-antd/spin'
-import { NzToolTipModule } from 'ng-zorro-antd/tooltip'
+import { NzTooltipModule } from 'ng-zorro-antd/tooltip'
 import { CardComponent } from 'src/components/card/index.component'
 import { NoDataComponent } from 'src/components/no-data/no-data.component'
 import { FooterComponent } from 'src/components/footer/footer.component'
@@ -35,7 +35,7 @@ import event from 'src/utils/mitt'
     WebMoreMenuComponent,
     SearchComponent,
     NzSpinModule,
-    NzToolTipModule,
+    NzTooltipModule,
     CardComponent,
     NoDataComponent,
     FooterComponent,
