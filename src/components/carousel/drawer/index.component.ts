@@ -12,7 +12,6 @@ import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzButtonModule } from 'ng-zorro-antd/button'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'
-import { UploadImageComponent } from 'src/components/upload-image/index.component'
 import { NzSliderModule } from 'ng-zorro-antd/slider'
 import { NzSelectModule } from 'ng-zorro-antd/select'
 import { CODE_SYMBOL } from 'src/constants/symbol'
@@ -28,7 +27,6 @@ import { CODE_SYMBOL } from 'src/constants/symbol'
     NzButtonModule,
     NzInputModule,
     NzDatePickerModule,
-    UploadImageComponent,
     NzSliderModule,
     NzSelectModule,
   ],
@@ -54,13 +52,6 @@ export class CarouselDrawerComponent {
 
   get imgs(): FormArray {
     return this.validateForm.get('imgs') as FormArray
-  }
-
-  onUploadImage(data: any, idx: number) {
-    const imgGroup = this.imgs.at(idx)
-    imgGroup.patchValue({
-      img: data.cdn,
-    })
   }
 
   open(data: any, idx: number) {

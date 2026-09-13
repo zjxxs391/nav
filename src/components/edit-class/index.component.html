@@ -28,17 +28,12 @@
       <nz-form-item>
         <nz-form-label [nzSpan]="6">{{ $t('_iconAddr') }}</nz-form-label>
         <nz-form-control [nzSpan]="18">
-          <nz-input-group [nzPrefix]="prefixIcon" [nzSuffix]="suffixIconSearch">
+          <nz-input-group [nzPrefix]="prefixIcon">
             <input formControlName="icon" nz-input />
           </nz-input-group>
 
           <ng-template #prefixIcon>
             <app-logo [src]="iconUrl" [size]="25" *ngIf="iconUrl" />
-          </ng-template>
-          <ng-template #suffixIconSearch>
-            <app-upload-image
-              (onChange)="onChangeFile($event)"
-            ></app-upload-image>
           </ng-template>
         </nz-form-control>
       </nz-form-item>

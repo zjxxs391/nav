@@ -20,24 +20,14 @@
   <nz-form-item>
     <nz-form-label [nzSpan]="2">{{ $t('_logoImg') }}</nz-form-label>
     <nz-form-control [nzSpan]="22">
-      <nz-input-group [nzSuffix]="suffixLogo">
-        <input nz-input formControlName="logo" />
-      </nz-input-group>
-      <ng-template #suffixLogo>
-        <app-upload-image (onChange)="onLogoChange($event, 'logo')" />
-      </ng-template>
+      <input nz-input formControlName="logo" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-label [nzSpan]="2">{{ $t('_logoDarkImg') }}</nz-form-label>
     <nz-form-control [nzSpan]="22">
-      <nz-input-group [nzSuffix]="suffixDarkLogo">
-        <input nz-input formControlName="darkLogo" />
-      </nz-input-group>
-      <ng-template #suffixDarkLogo>
-        <app-upload-image (onChange)="onLogoChange($event, 'darkLogo')" />
-      </ng-template>
+      <input nz-input formControlName="darkLogo" />
     </nz-form-control>
   </nz-form-item>
 
@@ -80,9 +70,6 @@
           [(ngModel)]="data.icon"
           style="width: 180px"
         />
-        <app-upload-image
-          (onChange)="onChangeUpload($event, idx)"
-        ></app-upload-image>
       </td>
       <td>
         <input nz-input [(ngModel)]="data.placeholder" maxlength="50" />

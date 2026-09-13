@@ -10,15 +10,7 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="4">{{ $t('_image') }}</nz-form-label>
       <nz-form-control [nzSpan]="20">
-        <nz-input-group [nzSuffix]="suffixIconSearch">
-          <input formControlName="url" nz-input />
-        </nz-input-group>
-
-        <ng-template #suffixIconSearch>
-          <app-upload-image
-            (onChange)="onUploadImage($event)"
-          ></app-upload-image>
-        </ng-template>
+        <input formControlName="url" nz-input />
       </nz-form-control>
     </nz-form-item>
 

@@ -10,12 +10,10 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer'
 import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzButtonModule } from 'ng-zorro-antd/button'
 import { NzInputModule } from 'ng-zorro-antd/input'
-import { UploadImageComponent } from 'src/components/upload-image/index.component'
 
 @Component({
   standalone: true,
   imports: [
-    UploadImageComponent,
     FormsModule,
     ReactiveFormsModule,
     NzDrawerModule,
@@ -49,10 +47,6 @@ export class ImageDrawerComponent {
       this.validateForm.get(k)?.setValue(data[k])
     }
     this.visible = true
-  }
-
-  onUploadImage(data: any) {
-    this.validateForm.get('url')!.setValue(data.cdn)
   }
 
   handleClose() {

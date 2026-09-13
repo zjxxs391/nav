@@ -22,7 +22,6 @@ import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzSwitchModule } from 'ng-zorro-antd/switch'
 import { LogoComponent } from 'src/components/logo/logo.component'
-import { UploadImageComponent } from 'src/components/upload-image/index.component'
 import { $t } from 'src/locale'
 import { NzMessageService } from 'ng-zorro-antd/message'
 import { navs } from 'src/store'
@@ -40,7 +39,6 @@ import event from 'src/utils/mitt'
     NzInputModule,
     NzSwitchModule,
     LogoComponent,
-    UploadImageComponent,
     FormsModule,
     ReactiveFormsModule,
   ],
@@ -88,10 +86,6 @@ export class EditClassComponent {
     setTimeout(() => {
       this.input?.nativeElement?.focus()
     }, 400)
-  }
-
-  onChangeFile(data: any) {
-    this.validateForm.get('icon')!.setValue(data.cdn)
   }
 
   onCancel() {

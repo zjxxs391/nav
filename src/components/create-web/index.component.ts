@@ -13,22 +13,14 @@ import {
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { getTextContent, getClassById } from 'src/utils'
-import { getTempId, isSelfDevelop } from 'src/utils/utils'
+import { getTempId } from 'src/utils/utils'
 import { updateByWeb, pushDataByAny } from 'src/utils/web'
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms'
 import type { IWebProps, IWebTag } from 'src/types'
 import { TopType, ActionType } from 'src/types'
 import { NzMessageService } from 'ng-zorro-antd/message'
 import { NzNotificationService } from 'ng-zorro-antd/notification'
-import {
-  saveUserCollect,
-  getWebInfo,
-  getTranslate,
-  getScreenshot,
-  createImageFile,
-  getImageRepo,
-  getCDN,
-} from 'src/api'
+import { saveUserCollect, getWebInfo, getTranslate } from 'src/api'
 import { $t } from 'src/locale'
 import { settings, navs, tagList, tagMap } from 'src/store'
 import { isLogin, getPermissions } from 'src/utils/user'
@@ -39,7 +31,6 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch'
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox'
 import { NzRateModule } from 'ng-zorro-antd/rate'
 import { LogoComponent } from 'src/components/logo/logo.component'
-import { UploadImageComponent } from 'src/components/upload-image/index.component'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { NzButtonModule } from 'ng-zorro-antd/button'
 import { NzSelectModule } from 'ng-zorro-antd/select'
@@ -66,7 +57,6 @@ import event from 'src/utils/mitt'
     NzCheckboxModule,
     NzRateModule,
     LogoComponent,
-    UploadImageComponent,
     NzIconModule,
     NzButtonModule,
   ],
@@ -306,10 +296,6 @@ export class CreateWebComponent {
     ;(this.validateForm.get('urlArr') as FormArray).removeAt(idx)
   }
 
-  onChangeFile(data: any, key: string) {
-    this.validateForm.get(key)!.setValue(data.cdn)
-  }
-
   onSelectChange(idx: number) {
     this.inputs.forEach((item, index) => {
       if (idx === index) {
@@ -349,32 +335,6 @@ export class CreateWebComponent {
       })
       .finally(() => {
         this.translating = false
-      })
-  }
-
-  getScreenshot() {
-    const url = (this.validateForm.get('url')?.value || '').trim()
-    this.submitting = true
-    getScreenshot({ url })
-      .then((res) => {
-        const path = `${Date.now()}.png`
-        createImageFile({
-          branch: getImageRepo().branch,
-          message: 'create image',
-          content: res.data.image,
-          isEncode: false,
-          path,
-        })
-          .then((res) => {
-            const value = isSelfDevelop ? res.data.fullImagePath : getCDN(path)
-            this.validateForm.get('img')!.setValue(value)
-          })
-          .finally(() => {
-            this.submitting = false
-          })
-      })
-      .catch(() => {
-        this.submitting = false
       })
   }
 

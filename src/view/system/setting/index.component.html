@@ -1,31 +1,16 @@
-<div *ngIf="isSelfDevelop">
-  <span class="inline-block !w-[16.66666667%] text-right mb-2.5"
-    >上传文件到网站根目录：</span
-  >
-  <app-upload-file />
-</div>
-
 <form nz-form [formGroup]="validateForm" class="!pb-20">
   <nz-form-item>
     <nz-form-label [nzSpan]="4">{{ $t('_webLogo') }}</nz-form-label>
     <nz-form-control [nzSpan]="20">
-      <label id="file">
-        <img [src]="settings.favicon" class="w-14 h-14 object-cover" />
-        <span>
-          {{ $t('_updateLogo') }}
-        </span>
-        <app-upload-image
-          (onChange)="onLogoChange($event, 'favicon')"
-        ></app-upload-image>
-        <div>
-          <input
-            class="logo-input"
-            nz-input
-            [value]="settings.favicon"
-            (input)="onLogoChange($event, 'favicon')"
-          />
-        </div>
-      </label>
+      <img [src]="settings.favicon" class="w-14 h-14 object-cover" />
+      <div>
+        <input
+          class="logo-input"
+          nz-input
+          [value]="settings.favicon"
+          (input)="onLogoChange($event, 'favicon')"
+        />
+      </div>
     </nz-form-control>
   </nz-form-item>
 
@@ -330,18 +315,7 @@
   <nz-form-item *ngIf="isSelfDevelop">
     <nz-form-label [nzSpan]="4">PWA Icon</nz-form-label>
     <nz-form-control [nzSpan]="20">
-      <nz-input-group [nzSuffix]="suffixIconPwa">
-        <input formControlName="pwaIcon" nz-input placeholder="512x512.png" />
-      </nz-input-group>
-
-      <ng-template #suffixIconPwa>
-        <ng-content>
-          <app-upload-image
-            (onChange)="onLogoChange($event, 'pwaIcon')"
-            accept="image/png"
-          ></app-upload-image>
-        </ng-content>
-      </ng-template>
+      <input formControlName="pwaIcon" nz-input placeholder="512x512.png" />
     </nz-form-control>
   </nz-form-item>
 
@@ -418,9 +392,6 @@
                       [value]="data['src']"
                       class="!w-[80%] !mr-2.5 !mt-2.5"
                       (change)="onChangeBannerUrl($event, 'lightImages', idx)"
-                    />
-                    <app-upload-image
-                      (onChange)="onBannerChange($event, 'lightImages', idx)"
                     />
                   </div>
                 </td>
@@ -549,9 +520,6 @@
                       class="!w-[80%] !mr-2.5 !mt-2.5"
                       (change)="onChangeBannerUrl($event, 'superImages', idx)"
                     />
-                    <app-upload-image
-                      (onChange)="onBannerChange($event, 'superImages', idx)"
-                    />
                   </div>
                 </td>
                 <td>
@@ -676,9 +644,6 @@
                         onChangeBannerUrl($event, 'simThemeImages', idx)
                       "
                     />
-                    <app-upload-image
-                      (onChange)="onBannerChange($event, 'simThemeImages', idx)"
-                    />
                   </div>
                 </td>
                 <td>
@@ -786,24 +751,14 @@
       <nz-form-item>
         <nz-form-label [nzSpan]="4">{{ $t('_logoImg') }}</nz-form-label>
         <nz-form-control [nzSpan]="20">
-          <nz-input-group [nzSuffix]="suffixLogo">
-            <input nz-input formControlName="logo" />
-          </nz-input-group>
-          <ng-template #suffixLogo>
-            <app-upload-image (onChange)="onLogoChange($event, 'logo')" />
-          </ng-template>
+          <input nz-input formControlName="logo" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
         <nz-form-label [nzSpan]="4">{{ $t('_logoDarkImg') }}</nz-form-label>
         <nz-form-control [nzSpan]="20">
-          <nz-input-group [nzSuffix]="suffixDarkLogo">
-            <input nz-input formControlName="darkLogo" />
-          </nz-input-group>
-          <ng-template #suffixDarkLogo>
-            <app-upload-image (onChange)="onLogoChange($event, 'darkLogo')" />
-          </ng-template>
+          <input nz-input formControlName="darkLogo" />
         </nz-form-control>
       </nz-form-item>
 
@@ -858,11 +813,6 @@
                       class="!w-[80%] !mr-2.5 !mt-2.5"
                       (change)="
                         onChangeBannerUrl($event, 'sideThemeImages', idx)
-                      "
-                    />
-                    <app-upload-image
-                      (onChange)="
-                        onBannerChange($event, 'sideThemeImages', idx)
                       "
                     />
                   </div>
@@ -986,7 +936,6 @@
             (change)="onShortcutImgChange($event)"
             class="max-w-full w-full !mt-2.5"
           />
-          <app-upload-image (onChange)="onShortcutImgChange($event)" />
         </nz-form-control>
       </nz-form-item>
     </nz-tab>

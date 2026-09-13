@@ -30,14 +30,6 @@ export function removeToken() {
   return globalThis.localStorage.removeItem(STORAGE_KEY_MAP.TOKEN)
 }
 
-export function getImageToken() {
-  return globalThis.localStorage?.getItem(STORAGE_KEY_MAP.IMAGE_TOKEN) || ''
-}
-
-export function setImageToken(token: string) {
-  return globalThis.localStorage.setItem(STORAGE_KEY_MAP.IMAGE_TOKEN, token)
-}
-
 export function removeWebsite() {
   return localforage.removeItem(STORAGE_KEY_MAP.WEBSITE)
 }

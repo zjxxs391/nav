@@ -10,7 +10,6 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer'
 import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzButtonModule } from 'ng-zorro-antd/button'
 import { NzInputModule } from 'ng-zorro-antd/input'
-import { UploadImageComponent } from 'src/components/upload-image/index.component'
 import { NzColorPickerModule } from 'ng-zorro-antd/color-picker'
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'
 import dayjs from 'dayjs'
@@ -25,7 +24,6 @@ import dayjs from 'dayjs'
     NzFormModule,
     NzButtonModule,
     NzInputModule,
-    UploadImageComponent,
     NzColorPickerModule,
   ],
   selector: 'countdown-drawer',
@@ -58,10 +56,6 @@ export class CountdownDrawerComponent {
       this.validateForm.get(k)?.setValue(data[k])
     }
     this.visible = true
-  }
-
-  onUploadImage(data: any) {
-    this.validateForm.get('url')!.setValue(data.cdn)
   }
 
   handleClose() {

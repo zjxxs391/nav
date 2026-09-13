@@ -95,7 +95,7 @@
       <nz-form-item>
         <nz-form-label [nzSpan]="4">{{ $t('_iconAddr') }}</nz-form-label>
         <nz-form-control [nzSpan]="20">
-          <nz-input-group [nzPrefix]="prefixIcon" [nzSuffix]="suffixIconSearch">
+          <nz-input-group [nzPrefix]="prefixIcon">
             <input
               formControlName="icon"
               nz-input
@@ -112,24 +112,13 @@
               <app-logo [src]="iconUrl" [size]="25" *ngIf="iconUrl" />
             </div>
           </ng-template>
-          <ng-template #suffixIconSearch>
-            <ng-content *ngIf="isLogin">
-              <app-upload-image
-                (onChange)="onChangeFile($event, 'icon')"
-              ></app-upload-image>
-            </ng-content>
-          </ng-template>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item *ngIf="isLogin">
         <nz-form-label [nzSpan]="4">{{ $t('_image') }}</nz-form-label>
         <nz-form-control [nzSpan]="20">
-          <nz-input-group
-            nzSearch
-            [nzPrefix]="prefixImgIcon"
-            [nzAddOnAfter]="suffixImgButton"
-          >
+          <nz-input-group [nzPrefix]="prefixImgIcon">
             <input
               formControlName="img"
               nz-input
@@ -148,22 +137,6 @@
           </ng-template>
         </nz-form-control>
       </nz-form-item>
-      <ng-template #suffixImgButton>
-        <span class="mx-2">
-          <app-upload-image
-            (onChange)="onChangeFile($event, 'img')"
-          ></app-upload-image>
-        </span>
-        <button
-          [nzLoading]="submitting"
-          nz-button
-          nzType="primary"
-          nzSearch
-          (click)="getScreenshot()"
-        >
-          {{ $t('_screenshot') }}
-        </button>
-      </ng-template>
 
       <nz-form-item>
         <nz-form-label [nzSpan]="4">{{ $t('_webDesc') }}</nz-form-label>

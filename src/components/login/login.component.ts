@@ -14,23 +14,12 @@ import { Router } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { NzMessageService } from 'ng-zorro-antd/message'
-import {
-  verifyToken,
-  createBranch,
-  authorName,
-  isStandaloneImage,
-} from 'src/api'
-import {
-  setToken,
-  removeToken,
-  removeWebsite,
-  setImageToken,
-} from 'src/utils/user'
+import { verifyToken, authorName } from 'src/api'
+import { setToken, removeToken, removeWebsite } from 'src/utils/user'
 import { $t } from 'src/locale'
 import { isSelfDevelop } from 'src/utils/utils'
 import { NzModalModule } from 'ng-zorro-antd/modal'
 import { NzInputModule } from 'ng-zorro-antd/input'
-import config from '../../../nav.config.json'
 
 @Component({
   standalone: true,
@@ -47,18 +36,12 @@ export class LoginComponent {
   readonly $t = $t
   readonly isSelfDevelop = isSelfDevelop
   token = ''
-  imageToken = ''
   submitting = false
-  showImgToken = false
 
   constructor(
     private readonly message: NzMessageService,
     private router: Router,
-  ) {
-    if (!isSelfDevelop) {
-      this.showImgToken = isStandaloneImage()
-    }
-  }
+  ) {}
 
   ngAfterViewInit(): void {
     this.inputFocus()
@@ -88,27 +71,6 @@ export class LoginComponent {
       return
     }
 
-    if (this.showImgToken) {
-      const token = this.imageToken.trim()
-      if (!token) {
-        this.message.error('Please enter the image TOKEN')
-        return
-      }
-      try {
-        this.submitting = true
-        const authorName = config.imageRepoUrl.split('/').at(-2)
-        const res = await verifyToken(token, config.imageRepoUrl)
-        if ((res?.data?.login ?? res?.data?.username) !== authorName) {
-          this.message.error('Image Bad credentials')
-          return
-        }
-        setImageToken(token)
-      } catch {
-      } finally {
-        this.submitting = false
-      }
-    }
-
     this.submitting = true
 
     try {
@@ -123,11 +85,9 @@ export class LoginComponent {
       setToken(token)
 
       try {
-        createBranch('image').finally(() => {
-          this.message.success($t('_tokenVerSuc'))
-          removeWebsite().finally(() => {
-            window.location.reload()
-          })
+        this.message.success($t('_tokenVerSuc'))
+        removeWebsite().finally(() => {
+          window.location.reload()
         })
       } catch {
         removeToken()

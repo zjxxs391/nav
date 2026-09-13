@@ -22,7 +22,6 @@ import { NzTableModule } from 'ng-zorro-antd/table'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzSwitchModule } from 'ng-zorro-antd/switch'
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm'
-import { UploadImageComponent } from 'src/components/upload-image/index.component'
 import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzSliderModule } from 'ng-zorro-antd/slider'
 import { isValidImg } from 'src/utils'
@@ -36,7 +35,6 @@ import { isValidImg } from 'src/utils'
     NzButtonModule,
     NzTableModule,
     NzInputModule,
-    UploadImageComponent,
     NzSwitchModule,
     NzPopconfirmModule,
     NzFormModule,
@@ -163,9 +161,5 @@ export default class SystemSearchComponent {
           })
       },
     })
-  }
-
-  onChangeUpload(path: any, idx: number) {
-    this.searchList[idx].icon = path.cdn
   }
 }

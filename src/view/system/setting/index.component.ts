@@ -32,8 +32,6 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs'
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm'
 import { NzPopoverModule } from 'ng-zorro-antd/popover'
 import { NzSelectModule } from 'ng-zorro-antd/select'
-import { UploadImageComponent } from 'src/components/upload-image/index.component'
-import { UploadFileComponent } from 'src/components/upload-file/index.component'
 import { CardComponent } from 'src/components/card/index.component'
 import { ActionType } from 'src/types'
 import type { IComponentItemProps, IWebProps, ThemeType } from 'src/types'
@@ -66,8 +64,6 @@ const extraForm: Record<string, any> = {
     NzRadioModule,
     NzCheckboxModule,
     NzPopconfirmModule,
-    UploadImageComponent,
-    UploadFileComponent,
     CardComponent,
   ],
   selector: 'system-setting',
@@ -178,10 +174,6 @@ export default class SystemSettingComponent {
   onLogoChange(data: any, key: string) {
     this.settings[key] = data.cdn || data.target?.value || ''
     this.validateForm.get(key)?.setValue(this.settings[key])
-  }
-
-  onBannerChange(data: any, key: string, idx: number) {
-    this.settings[key][idx]['src'] = data.cdn
   }
 
   onChangeBannerUrl(e: any, key: string, idx: number) {

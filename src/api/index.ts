@@ -14,7 +14,7 @@ import qs from 'qs'
 import { encode } from 'js-base64'
 import { settings, navs, tagList, search, internal, component } from 'src/store'
 import { isSelfDevelop } from 'src/utils/utils'
-import { isLogin, getImageToken } from 'src/utils/user'
+import { isLogin, getToken } from 'src/utils/user'
 import { DB_PATH } from 'src/constants'
 import {
   getIsGitee,
@@ -258,7 +258,7 @@ export async function createImageFile({
     axiosConfig['headers'] = {
       Authorization: `${
         getIsGitLab(config.imageRepoUrl) ? 'Bearer' : 'token'
-      } ${getImageToken()}`,
+      } ${getToken()}`,
     }
   }
 
